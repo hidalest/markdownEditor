@@ -1,12 +1,11 @@
-import react from 'react';
+import React from 'react';
+import Sidebar from '../Sidebar/Sidebar';
 import './Navbar.scss';
 
 const Navbar: React.FC = () => {
   return (
     <nav className='navbar'>
-      <aside className='navbar__aside'>
-        <h2>My Documents</h2>
-      </aside>
+      <Sidebar />
     </nav>
   );
 };
