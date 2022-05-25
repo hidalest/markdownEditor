@@ -1,14 +1,15 @@
-import react from 'react';
-import './Navbar.scss';
+import React, { useState } from "react";
+import "./Navbar.scss";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar: React.FC = () => {
+  const [activeSidebar, setActiveSidebar] = useState(false);
   return (
-    <nav className='navbar'>
-      <aside className='navbar__aside'>
-        <h2>My Documents</h2>
-      </aside>
+    <nav className="navbar">
+      <Sidebar isActive={activeSidebar}/>
     </nav>
   );
 };
+
 
 export default Navbar;
