@@ -1,12 +1,11 @@
-import React from 'react';
-import './Sidebar.scss';
+import React from "react";
+import "./Sidebar.scss";
 
-const Sidebar: React.FC<NavbarProps> = (props) => {
-  const { isActive } = props;
-  const activeClass = isActive ? 'active' : '';
+const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
+  const activeClass = isActive ? "active" : "";
   return (
     <aside className={`sidebar ${activeClass}`}>
-      <h2>My documents</h2>
+      <h2>My Documents</h2>
     </aside>
   );
 };
