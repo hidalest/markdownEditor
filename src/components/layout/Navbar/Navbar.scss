@@ -7,4 +7,13 @@
   background-color: $black1;
   color: $white;
   display: flex;
+
+  &__hamburger {
+    background-color: $black2;
+
+    &:hover {
+      background-color: $black4;
+      transition: all 0.25s ease-out;
+    }
+  }
 }

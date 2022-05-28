@@ -1,11 +1,14 @@
-.sidebar{
-	&.active {
-		width: 30rem;
-		height: 100vh;
-		display: inline-block;
-	}
+@import '../../../sassStyles/variables';
 
-	width: 0;
-	background-color: red;
-	display: none;
+.sidebar {
+  &.active {
+    width: 30rem;
+    height: 100vh;
+    transition: all 0.25s ease-in;
+    visibility: visible;
+  }
+
+  width: 0;
+  background-color: $black1;
+  visibility: hidden;
 }
