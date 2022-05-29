@@ -1,14 +1,19 @@
 @import '../../../sassStyles/variables';
 
-.sidebar {
-  &.active {
-    width: 30rem;
-    height: 100vh;
-    transition: all 0.25s ease-in;
-    visibility: visible;
-  }
+// .sidebar {
+//   &.active {
+//     height: 100vh;
+//     width: 30rem;
+//     transition: width 0.25s ease-in;
+//     visibility: visible;
+//     padding: 2rem;
+//   }
 
-  width: 0;
-  background-color: $black1;
-  visibility: hidden;
-}
+//   h2 {
+//     font-size: 2rem;
+//   }
+
+//   width: 0;
+//   background-color: $black1;
+//   visibility: hidden;
+// }
