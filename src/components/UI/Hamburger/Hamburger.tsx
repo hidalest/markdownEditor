@@ -9,7 +9,7 @@ const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   const activeButton = isActive ? 'active' : '';
   return (
     <button
-      className={`hamburger ${className} ${activeButton}`}
+      className={`${className} hamburger  ${activeButton}`}
       onClick={onClick}
     >
       <div className='hamburger-container'>

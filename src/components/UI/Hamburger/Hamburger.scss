@@ -2,6 +2,10 @@
 @import '../../../sassStyles/mixins';
 
 .hamburger {
+  @include responsiveMax($phone) {
+    width: 5rem;
+  }
+
   &:hover {
     span[class*='bar'] {
       background-color: $grey3;
@@ -27,8 +31,9 @@
   }
 
   border: none;
-  width: 5rem;
+  width: 7rem;
   cursor: pointer;
+  height: 100%;
 
   &.active {
     .bar-2 {

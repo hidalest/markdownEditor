@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler } from 'react';
 import './Navbar.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import HamburgerButton from '../../UI/Hamburger/Hamburger';
@@ -9,9 +9,11 @@ const Navbar: React.FC<NavbarProps> = ({ isActive, onClick }) => {
       <Sidebar isActive={isActive} />
       <HamburgerButton
         isActive={isActive}
-        className={'navonClick'}
+        className={'navbar__hamburger'}
         onClick={onClick}
       />
+      <h1 className='navbar__title'>Markdown</h1>
+      <span className='navbar__separator'></span>
     </nav>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
+import DataContextProvider from './context/DataContextProvider';
 
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
@@ -9,10 +10,12 @@ function App() {
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
 
   return (
-    <div className={`App ${activeSidebarClass}`}>
-      <Navbar isActive={activeSidebar} onClick={toggleSidebarHandler} />
-      <h2>Test</h2>
-    </div>
+    <DataContextProvider>
+      <div className={`App ${activeSidebarClass}`}>
+        <Navbar isActive={activeSidebar} onClick={toggleSidebarHandler} />
+        <h2>Test</h2>
+      </div>
+    </DataContextProvider>
   );
 }
 
