@@ -5,6 +5,7 @@ const DataContext = React.createContext({
   removeFil: (item: object) => {},
   files: [
     {
+      id: 0,
       createdAt: '',
       name: '',
       content: '',

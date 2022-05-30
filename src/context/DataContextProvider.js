@@ -14,6 +14,7 @@ const DataContextProvider = (props) => {
     removeFile: removeFileHandler,
 
     files: [{
+      id: 2,
       createdAt: test2.createdAt,
       name: test2.name,
       content: test2.content

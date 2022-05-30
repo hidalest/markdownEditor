@@ -10,7 +10,12 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>
       {files.map((file) => (
-        <File className='' fileName={file.name} fileDate={file.createdAt} />
+        <File
+          className=''
+          key={file.id}
+          fileName={file.name}
+          fileDate={file.createdAt}
+        />
       ))}
     </aside>
   );
