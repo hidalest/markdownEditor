@@ -1,7 +1,12 @@
 import React from 'react';
 import '../Sidebar/File.scss';
 
-const File: React.FC<FileProptypes> = ({ className, fileName, fileDate }) => {
+const File: React.FC<FileProptypes> = ({
+  className,
+  fileName,
+  fileDate,
+  fileId,
+}) => {
   return (
     <div className={`file ${className}`}>
       <span className='material-symbols-outlined file__icon'>description</span>
@@ -17,5 +22,6 @@ interface FileProptypes {
   className: string;
   fileName: string;
   fileDate: string;
+  fileId: number;
 }
 export default File;

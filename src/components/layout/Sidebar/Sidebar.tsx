@@ -13,6 +13,7 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
         <File
           className=''
           key={file.id}
+          fileId={file.id}
           fileName={file.name}
           fileDate={file.createdAt}
         />

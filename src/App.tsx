@@ -13,7 +13,12 @@ function App() {
     <DataContextProvider>
       <div className={`App ${activeSidebarClass}`}>
         <Navbar isActive={activeSidebar} onClick={toggleSidebarHandler} />
-        <h2>Test</h2>
+        <main className='main'>
+          <div className='main__statusBar'>
+            <h3>MARKDOWN</h3>
+            <h3>PREVIEW</h3>
+          </div>
+        </main>
       </div>
     </DataContextProvider>
   );
