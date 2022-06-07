@@ -1,0 +1,11 @@
+@import '../../../sassStyles/variables';
+
+.main__editor {
+  height: 100vh;
+  &-textarea {
+    height: 100vh;
+    width: 50%;
+    border: none;
+    border-right: 1px solid $grey4;
+  }
+}
