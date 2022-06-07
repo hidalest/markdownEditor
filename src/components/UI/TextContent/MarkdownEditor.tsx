@@ -1,16 +1,25 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
-import marked from 'markdown-it';
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useContext,
+  useState,
+} from 'react';
+import { marked } from 'marked';
 import './MarkdownEditor.scss';
+import DataContext from '../../../context/data-context';
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
-  const { onChange, className } = props;
+  const ctx = useContext(DataContext);
+  const dummyData = ctx.files[0].content;
+  const { className } = props;
 
-  const [markdownText, setMarkdownText] = useState('');
+  const [markdownText, setMarkdownText] = useState(dummyData);
 
   const markdownTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdownText(e.target.value);
-    console.log(markdownText);
   };
+
+  const markdownTextOnBlurHandler = () => {};
 
   return (
     <div className='main__editor'>
@@ -20,8 +29,12 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
         onChange={markdownTextChangeHandler}
         className={`main__editor-textarea ${className}`}
         value={markdownText}
+        onClick={markdownTextOnBlurHandler}
       ></textarea>
-      <div className='main__editor-preview'>{marked.parse(markdownText)}</div>
+      <div
+        className='main__editor-preview'
+        dangerouslySetInnerHTML={{ __html: marked.parse(markdownText) }}
+      />
     </div>
   );
 };
