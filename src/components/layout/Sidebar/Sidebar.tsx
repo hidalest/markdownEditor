@@ -10,7 +10,9 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
   return (
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>
-      <Button className='' buttonType='document'>+ New Document</Button>
+      <Button className='sidebar-btn' buttonType='add'>
+        New Document
+      </Button>
       {files.map((file) => (
         <File
           className=''
