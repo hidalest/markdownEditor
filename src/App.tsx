@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
 import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
@@ -10,12 +10,6 @@ function App() {
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
 
-  const onChangeEditorHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const text = event.target.value;
-
-    console.log(text);
-  };
-
   return (
     <DataContextProvider>
       <div className={`App ${activeSidebarClass}`}>
@@ -25,7 +19,7 @@ function App() {
             <h3>MARKDOWN</h3>
             <h3>PREVIEW</h3>
           </div>
-          <MarkdownEditor onChange={onChangeEditorHandler} className={''} />
+          <MarkdownEditor className={''} />
         </main>
       </div>
     </DataContextProvider>

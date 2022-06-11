@@ -1,9 +1,4 @@
-import React, {
-  ChangeEvent,
-  ChangeEventHandler,
-  useContext,
-  useState,
-} from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import { marked } from 'marked';
 import './MarkdownEditor.scss';
 import DataContext from '../../../context/data-context';
@@ -19,8 +14,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
     setMarkdownText(e.target.value);
   };
 
-  const markdownTextOnBlurHandler = () => {};
-
   return (
     <div className='main__editor'>
       <textarea
@@ -29,7 +22,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
         onChange={markdownTextChangeHandler}
         className={`main__editor-textarea ${className}`}
         value={markdownText}
-        onClick={markdownTextOnBlurHandler}
       ></textarea>
       <div
         className='main__editor-preview'
@@ -40,7 +32,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
 };
 
 interface MarkdownEditorProps {
-  onChange: ChangeEventHandler;
   className: string;
 }
 export default MarkdownEditor;
