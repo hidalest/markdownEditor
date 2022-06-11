@@ -1,0 +1,10 @@
+@import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
+
+.button {
+  height: 4rem;
+  background-color: $red1;
+  border-radius: 10px;
+  padding: 1.3rem 2rem;
+
+}
