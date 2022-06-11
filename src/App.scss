@@ -48,5 +48,23 @@
     }
   }
 
+  .main {
+    &__statusBar {
+      display: flex;
+      background-color: $grey5;
+
+      h3 {
+        width: 50%;
+        letter-spacing: 0.5rem;
+        height: 100%;
+        padding: 1rem 2rem;
+
+        &:first-child {
+          border-right: 2px solid $grey4;
+        }
+      }
+    }
+  }
+
   transition: margin-left 0.3s ease-out; /* 0.5 second transition effect to slide in the sidebar */
 }

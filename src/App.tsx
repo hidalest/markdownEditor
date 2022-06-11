@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
+import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
 import DataContextProvider from './context/DataContextProvider';
 
 function App() {
@@ -13,7 +14,13 @@ function App() {
     <DataContextProvider>
       <div className={`App ${activeSidebarClass}`}>
         <Navbar isActive={activeSidebar} onClick={toggleSidebarHandler} />
-        <h2>Test</h2>
+        <main className='main'>
+          <div className='main__statusBar'>
+            <h3>MARKDOWN</h3>
+            <h3>PREVIEW</h3>
+          </div>
+          <MarkdownEditor className={''} />
+        </main>
       </div>
     </DataContextProvider>
   );

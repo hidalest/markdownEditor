@@ -1,0 +1,58 @@
+@import '../../../sassStyles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro&display=swap');
+
+.main__editor {
+  height: 100vh;
+  display: flex;
+  font-size: 1.2rem;
+  &-textarea {
+    height: 100vh;
+    width: 50%;
+    border: none;
+    border-right: 2px solid $grey4;
+    resize: none;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  &-preview {
+    width: 50%;
+    padding: 1rem 1rem 1rem 2rem;
+
+    & > * {
+      padding: 1rem 0;
+    }
+
+    ol,
+    ul {
+      padding-left: 30px;
+    }
+
+    ul li {
+      list-style: none;
+
+      &::before {
+        content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: $red1; /* Change the color */
+        font-weight: bold; /* If you want it to be bold */
+        display: inline-block; /* Needed to add space between the bullet and the text */
+        width: 1em; /* Also needed for space (tweak if needed) */
+        margin-left: -1em; /* Also needed for space (tweak if needed) */
+      }
+    }
+
+    blockquote {
+      background-color: $grey5;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 8px solid $red1;
+    }
+
+    pre {
+      background-color: $grey5;
+      padding: 2rem 3rem;
+      font-family: 'Source Code Pro', monospace;
+    }
+  }
+}

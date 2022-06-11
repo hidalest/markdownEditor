@@ -41,6 +41,8 @@
     ]
   },
   "devDependencies": {
+    "@types/marked": "^4.0.3",
+    "marked": "^4.0.16",
     "prettier": "^2.6.2",
     "sass": "^1.52.1"
   }
