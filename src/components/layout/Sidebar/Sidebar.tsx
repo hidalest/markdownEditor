@@ -7,10 +7,16 @@ import './Sidebar.scss';
 const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
   const activeClass = isActive ? 'active' : '';
   const { files } = useContext(DataContext);
+
+  const onCreateNewFile = function () {};
   return (
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>
-      <Button className='sidebar-btn' buttonType='add'>
+      <Button
+        className='sidebar-btn'
+        buttonType='add'
+        onClick={onCreateNewFile}
+      >
         New Document
       </Button>
       {files.map((file) => (
