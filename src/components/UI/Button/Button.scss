@@ -1,0 +1,33 @@
+@import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
+
+.button {
+  height: 4rem;
+  max-width: 20rem;
+  background-color: $red1;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  color: $white;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    padding-right: 0.5rem;
+  }
+
+  &:hover {
+    background-color: rgba($color: $red2, $alpha: 1);
+    color: $grey4;
+    transition: all 0.3s ease-out;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0px);
+    background-color: $red1;
+    transition: all 0.3s ease-out;
+  }
+}
