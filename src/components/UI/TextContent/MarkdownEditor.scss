@@ -3,17 +3,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro&display=swap');
 
 .main__editor {
-  height: 100vh;
   display: flex;
   font-size: 1.2rem;
+  height: 100vh;
 
   @include responsiveMax($phone) {
     flex-direction: column;
-    height: 100%;
+
+    textarea {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .main__editor-preview {
+      display: none;
+      width: 100%;
+    }
+
+    &.show-mobile-view {
+      textarea {
+        display: none;
+      }
+
+      .main__editor-preview {
+        display: inline-block;
+        width: 100%;
+      }
+    }
   }
 
   &-textarea {
-    height: 100vh;
+    height: 100%;
     width: 50%;
     border: none;
     border-right: 2px solid $grey4;

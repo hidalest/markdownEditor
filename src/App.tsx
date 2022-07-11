@@ -8,6 +8,7 @@ function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const toggleSidebarHandler = () => setActiveSidebar(!activeSidebar);
+  const togglePreviewHandler = () => setShowPreview(!showPreview);
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
   const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
@@ -19,23 +20,19 @@ function App() {
         <main className='main'>
           <div className='main__statusBar'>
             <div className='main__statusBar-actions main__statusBar-actions-markdown'>
-              <h3>MARKDOWN</h3>
-              <button>
-                <span className='material-symbols-outlined main__statusBar-actions-visibleIcon'>
-                  visibility
+              <h3>{showPreview ? 'Preview' : 'Markdown'}</h3>
+              <button onClick={togglePreviewHandler}>
+                <span className='buttonToggle-label'>Click me!</span>
+                <span className='material-symbols-outlined main__statusBar-actions-toggleIcon'>
+                  {showPreview ? 'visibility_off' : 'visibility'}
                 </span>
               </button>
             </div>
             <div className='main__statusBar-actions main__statusBar-actions-preview'>
               <h3>PREVIEW</h3>
-              <button>
-                <span className='material-symbols-outlined main__statusBar-actions-invisibleIcon'>
-                  visibility_off
-                </span>
-              </button>
             </div>
           </div>
-          <MarkdownEditor className={''} />
+          <MarkdownEditor className={''} mobileShowPreview={showPreview} />
         </main>
       </div>
     </DataContextProvider>
