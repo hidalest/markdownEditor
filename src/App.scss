@@ -68,6 +68,17 @@
       display: flex;
       background-color: $grey5;
 
+      &-actions {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        border-right: 2px solid $grey4;
+
+        &-markdown.show {
+          display: block;
+        }
+      }
+
       h3 {
         width: 50%;
         letter-spacing: 0.5rem;
@@ -75,7 +86,7 @@
         padding: 1rem 2rem;
 
         &:first-child {
-          border-right: 2px solid $grey4;
+          // border-right: 2px solid $grey4;
         }
       }
     }

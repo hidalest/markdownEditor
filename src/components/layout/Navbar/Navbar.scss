@@ -7,7 +7,33 @@
   background-color: $black3;
   color: $white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
+  &__actions {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    &-btnDelete {
+      background: none;
+      border: none;
+      color: $grey1;
+      margin-right: 2rem;
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+
+      &:hover {
+        color: $grey2;
+        transform: scale(1.2);
+      }
+    }
+
+    &-btnSave {
+      padding: 1rem 1.3rem;
+      margin-right: 2rem;
+    }
+  }
 
   &__hamburger {
     background-color: $black4;
