@@ -83,6 +83,11 @@
 
           .buttonToggle-label {
             margin-right: 1.3rem;
+            display: none;
+
+            @include responsiveMax($phone) {
+              display: inline-block;
+            }
           }
         }
 
