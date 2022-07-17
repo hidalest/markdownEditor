@@ -11,7 +11,7 @@ function App() {
   const togglePreviewHandler = () => setShowPreview(!showPreview);
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
-  const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
+  // const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
 
   return (
     <DataContextProvider>

@@ -3,15 +3,23 @@ import { marked } from 'marked';
 import './MarkdownEditor.scss';
 import DataContext from '../../../context/data-context';
 import TextArea from 'textarea-autosize-reactjs';
+import defaultData from '../../../data.json';
 
-const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
-  const ctx = useContext(DataContext);
-  const dummyData = ctx.files[0].content;
+const defaultFile = defaultData[0];
+
+const MarkdownEditor = (props) => {
+  const dataContext = useContext(DataContext);
+  const files = dataContext.files;
+
+  const activeFile = files.find((file) => file.isActive);
+
   const { className, mobileShowPreview } = props;
 
-  const [markdownText, setMarkdownText] = useState(dummyData);
+  const [markdownText, setMarkdownText] = useState(
+    activeFile.content || defaultFile.content
+  );
 
-  const markdownTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const markdownTextChangeHandler = (e) => {
     setMarkdownText(e.target.value);
   };
 
@@ -34,8 +42,4 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = (props) => {
   );
 };
 
-interface MarkdownEditorProps {
-  className: string;
-  mobileShowPreview: boolean;
-}
 export default MarkdownEditor;
