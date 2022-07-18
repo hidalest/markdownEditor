@@ -13,9 +13,28 @@ const initialState = {
   content: test2.content,
 };
 
+const sendDataToDB = async function () {
+  const response = await fetch(
+    'https://react-markdownfiles-default-rtdb.firebaseio.com/files.json',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        isActive: true,
+        id: 2,
+        createdAt: 'today',
+        name: 'untitled-name.md',
+        content: '',
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }
+  );
+};
+
 const dataStateReducerFn = (state, action) => {
   if (action.type === 'ADD') {
-    console.log('file added!');
+    sendDataToDB();
   }
   return initialState;
 };

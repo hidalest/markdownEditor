@@ -4,11 +4,11 @@ import Button from '../../UI/Button/Button';
 import File from './File';
 import './Sidebar.scss';
 
-const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
+const Sidebar = ({ isActive }) => {
   const activeClass = isActive ? 'active' : '';
-  const { files } = useContext(DataContext);
+  const { files, addFile } = useContext(DataContext);
 
-  const onCreateNewFile = function () {};
+  const onCreateNewFile = () => addFile();
   return (
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>
@@ -31,9 +31,5 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
     </aside>
   );
 };
-
-interface NavbarProps {
-  isActive: boolean;
-}
 
 export default Sidebar;
