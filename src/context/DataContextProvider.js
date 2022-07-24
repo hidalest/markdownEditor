@@ -20,7 +20,6 @@ const sendDataToDB = async function () {
       method: 'POST',
       body: JSON.stringify({
         isActive: true,
-        id: 2,
         createdAt: 'today',
         name: 'untitled-name.md',
         content: '',
@@ -30,11 +29,41 @@ const sendDataToDB = async function () {
       },
     }
   );
+
+  return fetchFiles();
+};
+
+const fetchFiles = async function () {
+  try {
+    const response = await fetch(
+      'https://react-markdownfiles-default-rtdb.firebaseio.com/files.json'
+    );
+
+    if (!response.ok) {
+      throw new Error('Unable to retrieve the files');
+    }
+
+    const data = await response.json();
+
+    const dataArray = [];
+
+    for (const key in data) {
+      dataArray.push({ id: key, ...data[key], key });
+    }
+
+    return dataArray;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const dataStateReducerFn = (state, action) => {
   if (action.type === 'ADD') {
-    sendDataToDB();
+    return sendDataToDB();
+  }
+
+  if (action.type === 'FETCH') {
+    return fetchFiles();
   }
   return initialState;
 };
@@ -46,12 +75,14 @@ const DataContextProvider = (props) => {
   );
 
   const addFile = (file) => dataStateDispatcher({ type: 'ADD', file });
+  const fetchFiles = (file) => dataStateDispatcher({ type: 'FETCH', file });
   const updateFile = (file) => dataStateDispatcher({ type: 'UPDATE', file });
   const removeFile = (file) => dataStateDispatcher({ type: 'REMOVE', file });
 
   const dataContext = {
     addFile,
     updateFile,
+    fetchFiles,
     removeFile,
 
     files: [dataState],
