@@ -17,6 +17,15 @@ const dataStateReducerFn = (state, action) => {
   if (action.type === 'ADD') {
     console.log('file added!');
   }
+
+  if (action.type === 'UPDATE') {
+    console.log(
+      '🚀 ~ file: DataContextProvider.js ~ line 22 ~ dataStateReducerFn ~ action',
+      action
+    );
+    console.log(`Files updated`);
+  }
+
   return initialState;
 };
 
