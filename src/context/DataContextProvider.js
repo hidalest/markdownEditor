@@ -9,6 +9,7 @@ const initialState = [];
 
 const dataStateReducerFn = (state, action) => {
   if (action.type === 'ADD') {
+    return state;
   }
 
   if (action.type === 'UPDATE') {

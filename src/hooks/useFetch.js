@@ -23,7 +23,9 @@ const useFetch = (requestConfig, applyAction) => {
 
       const data = await response.json();
 
-      applyAction(data);
+      if (typeof applyAction === 'function') {
+        applyAction(data);
+      }
       setIsLoading(false);
     } catch (error) {
       setIsError(error.message || 'Something Went wrong :(');
