@@ -4,9 +4,10 @@ import Button from '../../UI/Button/Button';
 import File from './File';
 import './Sidebar.scss';
 
-const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
+const Sidebar = ({ isActive }) => {
   const activeClass = isActive ? 'active' : '';
   const { files } = useContext(DataContext);
+  console.log('🚀 ~ file: Sidebar.js ~ line 10 ~ Sidebar ~ files', files);
 
   const onCreateNewFile = function () {};
   return (
@@ -19,21 +20,18 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
       >
         New Document
       </Button>
-      {files.map((file) => (
-        <File
-          className=''
-          key={file.id}
-          fileId={file.id}
-          fileName={file.name}
-          fileDate={file.createdAt}
-        />
-      ))}
+      {Array.isArray(files) &&
+        files.map((file) => (
+          <File
+            className=''
+            key={file.id}
+            fileId={file.id}
+            fileName={file.name}
+            fileDate={file.createdAt}
+          />
+        ))}
     </aside>
   );
 };
-
-interface NavbarProps {
-  isActive: boolean;
-}
 
 export default Sidebar;

@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar/Navbar';
 import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
 import DataContext from './context/data-context';
 import DataContextProvider from './context/DataContextProvider';
+import useFetch from './hooks/useFetch';
 
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
@@ -12,10 +13,27 @@ function App() {
   const togglePreviewHandler = () => setShowPreview(!showPreview);
   const { updateFile } = useContext(DataContext);
 
+  const requestConfig = {
+    method: 'GET',
+  };
+
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
   // const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
 
-  updateFile();
+  const getFiles = (fileList) => {
+    const loadedFiles = [];
+    for (const key in fileList) {
+      loadedFiles.push({ id: key, ...fileList[key] });
+    }
+
+    updateFile(loadedFiles);
+  };
+
+  const { isLoading, isError, sendRequest } = useFetch(requestConfig, getFiles);
+
+  useEffect(() => {
+    sendRequest();
+  }, []);
 
   return (
     <div className={`App ${activeSidebarClass}`}>
@@ -35,7 +53,7 @@ function App() {
             <h3>PREVIEW</h3>
           </div>
         </div>
-        <MarkdownEditor className={''} mobileShowPreview={showPreview} />
+        {/* <MarkdownEditor className={''} mobileShowPreview={showPreview} /> */}
       </main>
     </div>
   );
