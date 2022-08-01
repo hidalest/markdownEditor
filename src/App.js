@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
 import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
@@ -7,11 +8,40 @@ import DataContextProvider from './context/DataContextProvider';
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const files = useSelector((state) => state.files);
+
   const toggleSidebarHandler = () => setActiveSidebar(!activeSidebar);
   const togglePreviewHandler = () => setShowPreview(!showPreview);
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
   // const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
+
+  const fetchFiles = async function () {
+    try {
+      const response = await fetch(
+        'https://react-markdownfiles-default-rtdb.firebaseio.com/files.json'
+      );
+
+      if (!response.ok) {
+        throw new Error('Could not retrieve files, please try again later');
+      }
+
+      const loadedFiles = [];
+      const data = await response.json();
+
+      for (const key in data) {
+        loadedFiles.push({ id: key, ...data[key] });
+      }
+
+      console.log(loadedFiles);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchFiles();
+  }, []);
 
   return (
     <DataContextProvider>
