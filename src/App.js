@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
 import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
 import DataContextProvider from './context/DataContextProvider';
+import { filesActions } from './store';
 
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const files = useSelector((state) => state.files);
+  const dispatch = useDispatch();
 
   const toggleSidebarHandler = () => setActiveSidebar(!activeSidebar);
   const togglePreviewHandler = () => setShowPreview(!showPreview);
@@ -34,6 +36,7 @@ function App() {
       }
 
       console.log(loadedFiles);
+      dispatch(filesActions.fetchFiles(loadedFiles));
     } catch (error) {
       console.error(error.message);
     }

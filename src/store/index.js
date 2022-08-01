@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 import dummyData from '../data.json';
 
 const [test1, test2] = dummyData;
@@ -12,12 +13,11 @@ const filesSlice = createSlice({
     addFile(state, payload) {
       console.log(payload);
     },
-    fetchFiles(state, payload) {
-      console.log(payload);
+    fetchFiles(state, action) {
+      state = [...action.payload];
     },
-    deleteFile(state, payload) {
-      console.log(payload);
-    },
+
+    deleteFile(state, action) {},
   },
 });
 
