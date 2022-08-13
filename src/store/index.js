@@ -4,7 +4,7 @@ import dummyData from '../data.json';
 const [test1, test2] = dummyData;
 
 const initialState = {
-  files: [test2, {}],
+  files: [test2],
 };
 
 const newFileTemplate = {
@@ -31,11 +31,9 @@ const filesSlice = createSlice({
       });
     },
 
-    fetchFiles(state, action) {
+    updateFiles(state, action) {
       state.files = [...action.payload];
     },
-
-    updateFiles(state, action) {},
 
     deleteFile(state, action) {},
   },

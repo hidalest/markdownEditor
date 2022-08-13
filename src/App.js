@@ -12,12 +12,19 @@ function App() {
   const files = useSelector((state) => state.files);
   const dispatch = useDispatch();
 
+  /**
+   * Getting items from the localStorage
+   */
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('files'));
+    if (!items) return;
+    dispatch(filesActions.updateFiles(items));
+  }, [dispatch]);
+
   const toggleSidebarHandler = () => setActiveSidebar(!activeSidebar);
   const togglePreviewHandler = () => setShowPreview(!showPreview);
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
-
-  useEffect(() => {}, []);
 
   return (
     <DataContextProvider>
