@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filesActions } from '../../../store';
 
 const Navbar = ({ isActive, onClick }) => {
-  const [loadingEffect, setLoadingEffect] = useState(true);
-  const dispatch = useDispatch();
   const files = useSelector((state) => state.files.files);
 
   const onSaveClickHandler = () => {
