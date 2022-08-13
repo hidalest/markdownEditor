@@ -14,8 +14,6 @@ const Sidebar = ({ isActive }) => {
     dispatch(filesActions.addFile());
   };
 
-  console.log(files);
-
   return (
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>

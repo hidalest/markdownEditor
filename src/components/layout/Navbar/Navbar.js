@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import HamburgerButton from '../../UI/Hamburger/Hamburger';
@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filesActions } from '../../../store';
 
 const Navbar = ({ isActive, onClick }) => {
+  const [loadingEffect, setLoadingEffect] = useState(true);
   const dispatch = useDispatch();
   const files = useSelector((state) => state.files.files);
 
   const onSaveClickHandler = () => {
-    dispatch(filesActions.updateFiles(files));
-    console.log(files);
+    localStorage.setItem('files', JSON.stringify(files));
   };
 
   return (
