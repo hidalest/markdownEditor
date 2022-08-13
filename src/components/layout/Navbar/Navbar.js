@@ -9,6 +9,7 @@ import { filesActions } from '../../../store';
 const Navbar = ({ isActive, onClick }) => {
   const dispatch = useDispatch();
   const files = useSelector((state) => state.files.files);
+
   const onSaveClickHandler = () => {
     dispatch(filesActions.updateFiles(files));
     console.log(files);

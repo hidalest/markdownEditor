@@ -17,33 +17,7 @@ function App() {
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
 
-  const fetchFiles = async function () {
-    try {
-      const response = await fetch(
-        'https://react-markdownfiles-default-rtdb.firebaseio.com/files.json'
-      );
-
-      if (!response.ok) {
-        throw new Error('Could not retrieve files, please try again later');
-      }
-
-      const loadedFiles = [];
-      const data = await response.json();
-
-      for (const key in data) {
-        loadedFiles.push({ ...data[key] });
-      }
-
-      console.log('loadedFiles', loadedFiles);
-      dispatch(filesActions.fetchFiles(loadedFiles));
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchFiles();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <DataContextProvider>

@@ -35,33 +35,7 @@ const filesSlice = createSlice({
       state.files = [...action.payload];
     },
 
-    updateFiles(state, action) {
-      const sendToDB = async () => {
-        try {
-          for (const file of action.payload) {
-            if (!file.isModified) {
-              continue;
-            }
-            const response = await fetch(
-              'https://react-markdownfiles-default-rtdb.firebaseio.com/files.json',
-              {
-                method: 'Post',
-                body: JSON.stringify({ ...file, isModified: false }),
-                headers: { 'Content-type': 'application/json' },
-              }
-            );
-            const data = await response.json();
-            console.log(data);
-            if (!response.ok) {
-              throw new Error('Something went wrong, please try again later');
-            }
-          }
-        } catch (error) {
-          console.error(error.message);
-        }
-      };
-      sendToDB();
-    },
+    updateFiles(state, action) {},
 
     deleteFile(state, action) {},
   },
