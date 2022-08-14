@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
-import DataContext from '../../../context/data-context';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../UI/Button/Button';
 import File from './File';
 import './Sidebar.scss';
+// import { fileActions } from "../../../store/index.js";
+import { filesActions } from '../../../store/';
 
-const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
+const Sidebar = ({ isActive }) => {
   const activeClass = isActive ? 'active' : '';
-  const { files } = useContext(DataContext);
+  const files = useSelector((state) => state.files.files);
+  const dispatch = useDispatch();
 
-  const onCreateNewFile = function () {};
+  const onCreateNewFile = function () {
+    dispatch(filesActions.addFile());
+  };
+
   return (
     <aside className={`sidebar ${activeClass}`}>
       <h2>My Documents</h2>
@@ -31,9 +36,5 @@ const Sidebar: React.FC<NavbarProps> = ({ isActive }) => {
     </aside>
   );
 };
-
-interface NavbarProps {
-  isActive: boolean;
-}
 
 export default Sidebar;

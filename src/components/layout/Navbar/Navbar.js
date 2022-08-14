@@ -1,11 +1,17 @@
-import React, { MouseEventHandler } from 'react';
+import React, { useState } from 'react';
 import './Navbar.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import HamburgerButton from '../../UI/Hamburger/Hamburger';
 import Button from '../../UI/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { filesActions } from '../../../store';
 
-const Navbar: React.FC<NavbarProps> = ({ isActive, onClick }) => {
-  const onSaveClickHandler = () => {};
+const Navbar = ({ isActive, onClick }) => {
+  const files = useSelector((state) => state.files.files);
+
+  const onSaveClickHandler = () => {
+    localStorage.setItem('files', JSON.stringify(files));
+  };
 
   return (
     <nav className='navbar'>
@@ -35,10 +41,5 @@ const Navbar: React.FC<NavbarProps> = ({ isActive, onClick }) => {
     </nav>
   );
 };
-
-interface NavbarProps {
-  isActive: boolean;
-  onClick: MouseEventHandler;
-}
 
 export default Navbar;

@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 import Navbar from './components/layout/Navbar/Navbar';
 import MarkdownEditor from './components/UI/TextContent/MarkdownEditor';
 import DataContextProvider from './context/DataContextProvider';
+import { filesActions } from './store';
 
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const files = useSelector((state) => state.files);
+  const dispatch = useDispatch();
+
+  /**
+   * Getting items from the localStorage
+   */
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('files'));
+    if (!items) return;
+    dispatch(filesActions.updateFiles(items));
+  }, [dispatch]);
+
   const toggleSidebarHandler = () => setActiveSidebar(!activeSidebar);
   const togglePreviewHandler = () => setShowPreview(!showPreview);
 
   const activeSidebarClass = activeSidebar ? 'sidebarActive' : '';
-  // const showPreviewClass = showPreview ? 'show-preview' : 'hide-preview';
 
   return (
     <DataContextProvider>
