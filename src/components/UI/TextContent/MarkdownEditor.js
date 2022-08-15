@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { marked } from 'marked';
 import './MarkdownEditor.scss';
 import TextArea from 'textarea-autosize-reactjs';
@@ -6,6 +6,14 @@ import TextArea from 'textarea-autosize-reactjs';
 const MarkdownEditor = (props) => {
   const { className, mobileShowPreview, activeFile } = props;
   const { content } = activeFile;
+  console.log(
+    '🚀 ~ file: MarkdownEditor.js ~ line 9 ~ MarkdownEditor ~ content',
+    content
+  );
+
+  useEffect(() => {
+    setMarkdownText(content);
+  }, [content]);
 
   const [markdownText, setMarkdownText] = useState(content);
 

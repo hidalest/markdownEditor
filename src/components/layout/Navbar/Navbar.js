@@ -8,6 +8,7 @@ import { filesActions } from '../../../store';
 
 const Navbar = ({ isActive, onClick }) => {
   const files = useSelector((state) => state.files.files);
+  const selectedFile = files.find((file) => file.isActive);
 
   const onSaveClickHandler = () => {
     localStorage.setItem('files', JSON.stringify(files));
@@ -24,6 +25,7 @@ const Navbar = ({ isActive, onClick }) => {
         />
         <h1 className='navbar__title'>Markdown</h1>
         <span className='navbar__separator'></span>
+        <p>{selectedFile.name}</p>
       </div>
 
       <div className='navbar__actions'>
