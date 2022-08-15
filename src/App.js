@@ -9,7 +9,8 @@ import { filesActions } from './store';
 function App() {
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-  const files = useSelector((state) => state.files);
+  const files = useSelector((state) => state.files.files);
+  const activeFile = files.find((file) => file.isActive === true);
   const dispatch = useDispatch();
 
   /**
@@ -45,7 +46,11 @@ function App() {
               <h3>PREVIEW</h3>
             </div>
           </div>
-          <MarkdownEditor className={''} mobileShowPreview={showPreview} />
+          <MarkdownEditor
+            className={''}
+            mobileShowPreview={showPreview}
+            activeFile={activeFile}
+          />
         </main>
       </div>
     </DataContextProvider>

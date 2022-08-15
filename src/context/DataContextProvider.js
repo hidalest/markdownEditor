@@ -15,7 +15,6 @@ const initialState = {
 
 const dataStateReducerFn = (state, action) => {
   if (action.type === 'ADD') {
-    console.log('file added!');
   }
   return initialState;
 };

@@ -1,23 +1,13 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { marked } from 'marked';
 import './MarkdownEditor.scss';
-import DataContext from '../../../context/data-context';
 import TextArea from 'textarea-autosize-reactjs';
-import defaultData from '../../../data.json';
-
-const defaultFile = defaultData[0];
 
 const MarkdownEditor = (props) => {
-  const dataContext = useContext(DataContext);
-  const files = dataContext.files;
+  const { className, mobileShowPreview, activeFile } = props;
+  const { content } = activeFile;
 
-  const activeFile = files.find((file) => file.isActive);
-
-  const { className, mobileShowPreview } = props;
-
-  const [markdownText, setMarkdownText] = useState(
-    activeFile.content || defaultFile.content
-  );
+  const [markdownText, setMarkdownText] = useState(content);
 
   const markdownTextChangeHandler = (e) => {
     setMarkdownText(e.target.value);
