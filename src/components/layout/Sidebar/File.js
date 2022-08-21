@@ -8,7 +8,7 @@ const File = ({ className, fileName, fileDate, onClick, fileId }) => {
   const dispatch = useDispatch();
 
   const setFileActiveOnClick = () => {
-    dispatch(filesActions.updateSelectedFile({ id: fileId }));
+    dispatch(filesActions.setActiveFile({ id: fileId }));
   };
   return (
     <div className={`file ${className}`} onClick={setFileActiveOnClick}>

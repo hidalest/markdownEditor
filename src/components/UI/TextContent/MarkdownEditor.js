@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { marked } from 'marked';
 import './MarkdownEditor.scss';
 import TextArea from 'textarea-autosize-reactjs';
+import { useDispatch } from 'react-redux';
+import { filesActions } from '../../../store';
 
 const MarkdownEditor = (props) => {
   const { className, mobileShowPreview, activeFile } = props;
   const { content } = activeFile;
-  console.log(
-    '🚀 ~ file: MarkdownEditor.js ~ line 9 ~ MarkdownEditor ~ content',
-    content
-  );
+  const [markdownText, setMarkdownText] = useState(content);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setMarkdownText(content);
   }, [content]);
 
-  const [markdownText, setMarkdownText] = useState(content);
-
   const markdownTextChangeHandler = (e) => {
     setMarkdownText(e.target.value);
+    dispatch(
+      filesActions.updateCurrentFileContent({ content: e.target.value })
+    );
   };
 
   const mobileShowPreviewClass = mobileShowPreview ? 'show-mobile-view' : '';

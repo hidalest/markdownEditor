@@ -33,16 +33,18 @@ const filesSlice = createSlice({
       state.files = [...action.payload];
     },
 
-    updateSelectedFile(state, action) {
+    setActiveFile(state, action) {
       const { files } = state;
-      const { id, content } = action.payload;
+      const { id } = action.payload;
       files.forEach((file) => (file.isActive = false));
       const selectedFile = files.find((file) => file.id === id);
       selectedFile.isActive = true;
-      selectedFile.content = content ? content : selectedFile.content;
     },
 
-    deleteFile(state, action) {},
+    updateCurrentFileContent(state, action) {
+      const activeFile = state.files.find((file) => file.isActive === true);
+      activeFile.content = action.payload.content;
+    },
   },
 });
 
