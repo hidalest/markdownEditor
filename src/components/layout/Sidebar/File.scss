@@ -37,3 +37,10 @@
     }
   }
 }
+
+.is_active {
+  background-color: rgba($color: whitesmoke, $alpha: 0.3);
+  .file__date {
+    color: whitesmoke;
+  }
+}

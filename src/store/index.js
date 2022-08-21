@@ -10,7 +10,7 @@ const initialState = {
 const newFileTemplate = {
   createdAt: 'today',
   name: 'untitle-file.md',
-  content: 'start typing',
+  content: test2.content,
   isActive: true,
   isModified: true,
   id: Math.random(),
