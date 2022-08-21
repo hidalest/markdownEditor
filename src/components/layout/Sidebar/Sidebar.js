@@ -4,6 +4,7 @@ import File from './File';
 import './Sidebar.scss';
 // import { fileActions } from "../../../store/index.js";
 import { filesActions } from '../../../store/';
+import classNames from 'classnames';
 
 const Sidebar = ({ isActive }) => {
   const activeClass = isActive ? 'active' : '';
@@ -26,7 +27,7 @@ const Sidebar = ({ isActive }) => {
       </Button>
       {files.map((file) => (
         <File
-          className=''
+          className={classNames({ is_active: file.isActive })}
           key={file.id}
           fileId={file.id}
           fileName={file.name}
