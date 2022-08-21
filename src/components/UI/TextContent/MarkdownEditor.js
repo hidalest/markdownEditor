@@ -1,26 +1,25 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { marked } from 'marked';
 import './MarkdownEditor.scss';
-import DataContext from '../../../context/data-context';
 import TextArea from 'textarea-autosize-reactjs';
-import defaultData from '../../../data.json';
-
-const defaultFile = defaultData[0];
+import { useDispatch } from 'react-redux';
+import { filesActions } from '../../../store';
 
 const MarkdownEditor = (props) => {
-  const dataContext = useContext(DataContext);
-  const files = dataContext.files;
+  const { className, mobileShowPreview, activeFile } = props;
+  const { content } = activeFile;
+  const [markdownText, setMarkdownText] = useState(content);
+  const dispatch = useDispatch();
 
-  const activeFile = files.find((file) => file.isActive);
-
-  const { className, mobileShowPreview } = props;
-
-  const [markdownText, setMarkdownText] = useState(
-    activeFile.content || defaultFile.content
-  );
+  useEffect(() => {
+    setMarkdownText(content);
+  }, [content]);
 
   const markdownTextChangeHandler = (e) => {
     setMarkdownText(e.target.value);
+    dispatch(
+      filesActions.updateCurrentFileContent({ content: e.target.value })
+    );
   };
 
   const mobileShowPreviewClass = mobileShowPreview ? 'show-mobile-view' : '';
