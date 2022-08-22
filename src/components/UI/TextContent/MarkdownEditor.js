@@ -18,7 +18,10 @@ const MarkdownEditor = (props) => {
   const markdownTextChangeHandler = (e) => {
     setMarkdownText(e.target.value);
     dispatch(
-      filesActions.updateCurrentFileContent({ content: e.target.value })
+      filesActions.updateFileProperty({
+        property: 'content',
+        value: e.target.value,
+      })
     );
   };
 

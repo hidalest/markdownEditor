@@ -40,6 +40,8 @@
 
 .is_active {
   background-color: rgba($color: whitesmoke, $alpha: 0.3);
+  transition: all 1s ease-out;
+
   .file__date {
     color: whitesmoke;
   }
