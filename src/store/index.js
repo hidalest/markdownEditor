@@ -41,9 +41,10 @@ const filesSlice = createSlice({
       selectedFile.isActive = true;
     },
 
-    updateCurrentFileContent(state, action) {
+    updateFileProperty(state, action) {
+      const { value, property } = action.payload;
       const activeFile = state.files.find((file) => file.isActive === true);
-      activeFile.content = action.payload.content;
+      activeFile[property] = value;
     },
   },
 });
