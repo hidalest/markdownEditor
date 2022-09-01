@@ -46,6 +46,17 @@ const filesSlice = createSlice({
       const activeFile = state.files.find((file) => file.isActive === true);
       activeFile[property] = value;
     },
+
+    deleteFiles(state, action) {
+      const activeFileIndex = state.files.findIndex((file) => file.isActive);
+      const newFiles = state.files.filter((file) => !file.isActive);
+      if (activeFileIndex > 0) {
+        newFiles[activeFileIndex - 1].isActive = true;
+      } else {
+        newFiles[0].isActive = true;
+      }
+      state.files = [...newFiles];
+    },
   },
 });
 

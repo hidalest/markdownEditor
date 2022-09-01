@@ -41,7 +41,12 @@ const Navbar = ({ isActive, onClick }) => {
     setFileName(e.target.value);
   };
 
+  const onDeleteButtonHandler = (e) => {
+    dispatch(filesActions.deleteFiles());
+  };
+
   const handleFocus = (e) => e.target.select();
+  const disableDeleteButton = files.length === 1 ? true : false;
 
   return (
     <nav className='navbar'>
@@ -79,7 +84,7 @@ const Navbar = ({ isActive, onClick }) => {
               <p onDoubleClick={editFileNameHandler}>{selectedFile.name}</p>
 
               <button
-                class='material-symbols-outlined'
+                className='material-symbols-outlined'
                 onClick={editFileNameHandler}
               >
                 edit
@@ -90,7 +95,11 @@ const Navbar = ({ isActive, onClick }) => {
       </div>
 
       <div className='navbar__actions'>
-        <button className='navbar__actions-btnDelete'>
+        <button
+          className='navbar__actions-btnDelete'
+          onClick={onDeleteButtonHandler}
+          disabled={disableDeleteButton}
+        >
           <span className='material-symbols-outlined '>delete</span>
         </button>
         <Button
