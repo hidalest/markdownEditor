@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import dummyData from '../data.json';
+import printTodayDate from '../utils/date';
 
 const [test1, test2] = dummyData;
 
@@ -8,8 +9,8 @@ const initialState = {
 };
 
 const newFileTemplate = {
-  createdAt: 'today',
-  name: 'untitle-file.md',
+  createdAt: printTodayDate(),
+  name: 'untitled-file.md',
   content: test2.content,
   isActive: true,
   isModified: true,
