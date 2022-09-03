@@ -31,10 +31,10 @@ Users should be able to:
 
 ### Screenshot
 
-![Desktop View](./screenshot1.jpg)
-![Desktop Sidebar](./screenshot2.jpg)
-![Mobile Edit Mode](./screenshot3.jpg)
-![Mobile Preview Mode](./screenshot4.jpg)
+![Desktop View](./screenshot1.png)
+![Desktop Sidebar](./screenshot2.png)
+![Mobile Edit Mode](./screenshot3.png)
+![Mobile Preview Mode](./screenshot4.png)
 
 ### Links
 
