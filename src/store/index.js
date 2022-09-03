@@ -9,7 +9,7 @@ const initialState = {
 
 const newFileTemplate = {
   createdAt: 'today',
-  name: 'untitle-file.md',
+  name: 'untitled-file.md',
   content: test2.content,
   isActive: true,
   isModified: true,
